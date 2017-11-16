@@ -1,19 +1,21 @@
 def main():
-    bestand = "GCF_000164845.2_Vicugna_pacos-2.0.2_rna.fna" # Voer hier de bestandsnaam van het juiste bestand in, of hernoem je bestand
-    #bestand = "okeoke.txt"
-    headers, seqs = lees_inhoud(bestand)
+    try:
+        bestand = "GCF_000164845.2_Vicugna_pacos-2.0.2_rna.fna" # Voer hier de bestandsnaam van het juiste bestand in, of hernoem je bestand
+        #bestand = "okeoke.txt"
+        headers, seqs = lees_inhoud(bestand)
     
-    zoekwoord = input("Geef een zoekwoord op: ")
+        zoekwoord = input("Geef een zoekwoord op: ")
     
-    for index in range(len(headers)):                       #lees per header het bestand door
-        if zoekwoord in headers[index]:                     #als het zoekwoord in de header zit, print de headers in de lijst
-            print(headers[index])
-            if is_dna(seqs[index]):
-                print("sequence", index + 1, "is DNA")      #print dat het DNA is
-                knipt(seqs[index])                          #kijk of de enzymen knippen
-            else:
-                print("het is geen dna")
-
+        for index in range(len(headers)):                       #lees per header het bestand door
+            if zoekwoord in headers[index]:                     #als het zoekwoord in de header zit, print de headers in de lijst
+                print(headers[index])
+                if is_dna(seqs[index]):
+                    print("sequence", index + 1, "is DNA")      #print dat het DNA is
+                    knipt(seqs[index])                          #kijk of de enzymen knippen
+                else:
+                    print("het is geen dna")
+    except KeyboardInterrupt:
+        print("User interrupted")
 def lees_inhoud(bestand):
     try:
         bestand = open(bestand)                             #open het bestand en maak 2 lege lijsten aan
