@@ -9,6 +9,8 @@ def main():
         for index in range(len(headers)):                       #lees per header het bestand door
             if zoekwoord in headers[index]:                     #als het zoekwoord in de header zit, print de headers in de lijst
                 print(headers[index])
+                if zoekwoord not in headers[index]:
+                    print("Zoekwoord staat niet in de headers") 
                 if is_dna(seqs[index]):
                     print("sequence", index + 1, "is DNA")      #print dat het DNA is
                     knipt(seqs[index])                          #kijk of de enzymen knippen
